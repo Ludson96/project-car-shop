@@ -10,8 +10,8 @@ export default class CarODM extends AbstractODM<ICar> {
       color: { type: String, required: true },
       status: { type: Boolean, required: true },
       buyValue: { type: Number, required: true },
-      doorsQty: { type: Number, require: true },
-      seatsQty: { type: Number, require: true },
+      doorsQty: { type: Number, required: true },
+      seatsQty: { type: Number, required: true },
     });
     super(schema, 'cars');
   }

@@ -5,7 +5,12 @@ const router = Router();
 
 router.post(
   '/',
-  (res, req, next) => new CarController(res, req, next).create(),
+  (req, res, next) => new CarController(req, res, next).create(),
+);
+
+router.get(
+  '/',
+  (req, res, next) => new CarController(req, res, next).getAllCars(),
 );
 
 export default router;

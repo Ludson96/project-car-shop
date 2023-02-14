@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
 import CarService from '../../../src/Services/CarService';
-import { validCarInput, validCarOutput } from './mock/CarServiceMock';
+import { validCarInput, validCarOutput, validAllCarsOutput } from './mock/CarServiceMock';
 import Car from '../../../src/Domains/Car';
 
 const SUCESS = 'Com sucesso';
@@ -36,8 +36,12 @@ describe('Testando endpoint /cars', function () {
   describe('Listando carros', function () {
     describe('Listando todos os carros, endpoint "/cars" (get)', function () {
       it(SUCESS, function () {
-        sinon.stub(Model, 'find').resolves();
-        
+        sinon.stub(Model, 'find').resolves(validAllCarsOutput);
+
+        const service = new CarService();
+        const result = await service.getAllCars();
+
+        expect(result).to.be.deep.equal(validAllCarsOutput);
       });
 
       afterEach(function () {

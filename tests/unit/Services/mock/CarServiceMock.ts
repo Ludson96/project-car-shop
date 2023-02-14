@@ -10,8 +10,6 @@ export const validCarInput: ICar = {
   seatsQty: 5,
 };
 
-export const invalidCarInput = {};
-
 export const validCarOutput: ICar = {
   id: '63eb83aac4630c947eb1678c',
   model: 'Marea',
@@ -22,3 +20,36 @@ export const validCarOutput: ICar = {
   doorsQty: 4,
   seatsQty: 5,
 };
+
+export const validAllCarsOutput: ICar[] = [
+  {
+    id: '63eb83aac4630c947eb1678c',
+    model: 'Marea',
+    year: 2002,
+    color: 'Black',
+    status: false,
+    buyValue: 15.99,
+    doorsQty: 4,
+    seatsQty: 5,
+  },
+  {
+    id: '63eb83aac4630c947eb1678c',
+    model: 'Marea',
+    year: 2002,
+    color: 'Black',
+    status: false,
+    buyValue: 15.99,
+    doorsQty: 4,
+    seatsQty: 5,
+  },
+  {
+    id: '63eb83aac4630c947eb1678c',
+    model: 'Marea',
+    year: 2002,
+    color: 'Black',
+    status: false,
+    buyValue: 15.99,
+    doorsQty: 4,
+    seatsQty: 5,
+  },
+];

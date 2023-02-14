@@ -8,4 +8,19 @@ router.post(
   (req, res, next) => new MotorcycleController(req, res, next).create(),
 );
 
+router.get(
+  '/',
+  (req, res, next) => new MotorcycleController(req, res, next).getAllMoto(),
+);
+
+router.get(
+  '/:id',
+  (req, res, next) => new MotorcycleController(req, res, next).getMotoById(),
+);
+
+router.put(
+  '/:id',
+  (req, res, next) => new MotorcycleController(req, res, next).updateMoto(),
+);
+
 export default router;

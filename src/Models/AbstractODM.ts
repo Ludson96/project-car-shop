@@ -16,8 +16,6 @@ export default abstract class AbstractODM<T> {
   }
 
   public async update(_id: string, input: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error('Invalid Mongo id');
-
     return this.model.findByIdAndUpdate(
       { _id },
       { ...input } as UpdateQuery<T>,

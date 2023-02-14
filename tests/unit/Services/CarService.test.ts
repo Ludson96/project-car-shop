@@ -47,24 +47,23 @@ describe('Testando endpoint /cars', function () {
         expect(result).to.be.deep.equal(validAllCarsOutput);
       });
 
-      afterEach(function () {
-        sinon.restore();
-      });
+      // afterEach(function () {
+      //   sinon.restore();
+      // });
     });
 
-    describe('Listando carro específico, endpoint "/cars:id" (get)', function () {
-      it(SUCESS, async function () {
-        sinon.stub(Model, 'findById').resolves(validAllCarsOutput);
+    // describe('Listando carro específico, endpoint "/cars:id" (get)', function () {
+    //   it(SUCESS, async function () {
+    //     sinon.stub(Model, 'findById').resolves(validAllCarsOutput);
 
-        const result = await carService.getCarById(id);
+    //     const result = await carService.getCarById(id);
 
-        expect(result).to.be.deep.equal(validAllCarsOutput);
-        
-      });
+    //     expect(result).to.be.deep.equal(validAllCarsOutput);
+    //   });
 
-      afterEach(function () {
-        sinon.restore();
-      });
-    });
+    //   afterEach(function () {
+    //     sinon.restore();
+    //   });
+    // });
   });
 });

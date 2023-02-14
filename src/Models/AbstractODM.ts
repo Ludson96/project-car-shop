@@ -15,7 +15,7 @@ export default abstract class AbstractODM<T> {
     return this.model.create({ ...input });
   }
 
-  public async updateCar(_id: string, input: Partial<T>): Promise<T | null> {
+  public async update(_id: string, input: Partial<T>): Promise<T | null> {
     if (!isValidObjectId(_id)) throw Error('Invalid Mongo id');
 
     return this.model.findByIdAndUpdate(
@@ -23,5 +23,13 @@ export default abstract class AbstractODM<T> {
       { ...input } as UpdateQuery<T>,
       { new: true },
     );
+  }
+
+  public async getAll(): Promise<T[]> {
+    return this.model.find();
+  }
+
+  public async getById(id: string): Promise<T | null> {
+    return this.model.findById(id);
   }
 }

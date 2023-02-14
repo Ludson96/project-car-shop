@@ -21,7 +21,7 @@ export default class CarService {
 
   public async getAllCars(): Promise<(Car | null)[]> {
     const carODM = new CarODM();
-    const allCars = await carODM.getAllCars();
+    const allCars = await carODM.getAll();
     const result = allCars.map((car) => this.createCarDomain(car));
     return result;
   }
@@ -29,7 +29,7 @@ export default class CarService {
   public async getCarById(_id: string): Promise<Car | null> {
     if (!isValidObjectId(_id)) throw new StatusError(422, 'Invalid mongo id');
     const carODM = new CarODM();
-    const car = await carODM.getCarById(_id);
+    const car = await carODM.getById(_id);
     if (!car) throw new StatusError(404, 'Car not found');
     const result = this.createCarDomain(car);
     return result;
@@ -38,7 +38,7 @@ export default class CarService {
   public async updateCar(_id: string, input: ICar) {
     if (!isValidObjectId(_id)) throw new StatusError(422, 'Invalid mongo id');
     const carODM = new CarODM();
-    const updatedCar = await carODM.updateCar(_id, input);
+    const updatedCar = await carODM.update(_id, input);
     if (!updatedCar) throw new StatusError(404, 'Car not found');
     const result = this.createCarDomain(updatedCar);
     return result;

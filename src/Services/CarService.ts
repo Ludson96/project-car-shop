@@ -26,12 +26,21 @@ export default class CarService {
     return result;
   }
 
-  public async getCarById(id: string): Promise<Car | null> {
-    if (!isValidObjectId(id)) throw new StatusError(422, 'Invalid mongo id');
+  public async getCarById(_id: string): Promise<Car | null> {
+    if (!isValidObjectId(_id)) throw new StatusError(422, 'Invalid mongo id');
     const carODM = new CarODM();
-    const car = await carODM.getCarById(id);
+    const car = await carODM.getCarById(_id);
     if (!car) throw new StatusError(404, 'Car not found');
     const result = this.createCarDomain(car);
+    return result;
+  }
+
+  public async updateCar(_id: string, input: ICar) {
+    if (!isValidObjectId(_id)) throw new StatusError(422, 'Invalid mongo id');
+    const carODM = new CarODM();
+    const updatedCar = await carODM.updateCar(_id, input);
+    if (!updatedCar) throw new StatusError(404, 'Car not found');
+    const result = this.createCarDomain(updatedCar);
     return result;
   }
 }

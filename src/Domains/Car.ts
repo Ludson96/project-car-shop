@@ -1,87 +1,87 @@
 import ICar from '../Interfaces/ICar';
 
 export default class Car {
-  private _id: string | undefined;
-  private _model: string;
-  private _year: number;
-  private _color: string;
-  private _status: boolean;
-  private _buyValue: number;
-  private _doorsQty: number;
-  private _seatsQty: number;
+  protected id: string | undefined;
+  protected model: string;
+  protected year: number;
+  protected color: string;
+  protected status: boolean;
+  protected buyValue: number;
+  private doorsQty: number;
+  private seatsQty: number;
 
   constructor(car: ICar) {
-    this._id = car.id;
-    this._model = car.model;
-    this._year = car.year;
-    this._color = car.color;
-    this._status = car.status || false;
-    this._buyValue = car.buyValue;
-    this._doorsQty = car.doorsQty;
-    this._seatsQty = car.seatsQty;
+    this.id = car.id;
+    this.model = car.model;
+    this.year = car.year;
+    this.color = car.color;
+    this.status = car.status || false;
+    this.buyValue = car.buyValue;
+    this.doorsQty = car.doorsQty;
+    this.seatsQty = car.seatsQty;
   }
 
   public setId(id: string) {
-    this._id = id;
+    this.id = id;
   }
 
   public getId() {
-    return this._id;
+    return this.id;
   }
 
   public setModel(car: ICar) {
-    this._model = car.model;
+    this.model = car.model;
   }
 
   public getModel() {
-    return this._model;
+    return this.model;
   }
 
   public setYear(car: ICar) {
-    this._year = car.year;
+    this.year = car.year;
   }
 
   public getYear() {
-    return this._year;
+    return this.year;
   }
 
   public setColor(car: ICar) {
-    this._color = car.color;
+    this.color = car.color;
   }
 
   public getColor() {
-    return this._color;
+    return this.color;
   }
 
   public setStatus(status: boolean) {
-    this._status = status;
+    this.status = status;
   }
 
   public getStatus() {
-    return this._status;
+    return this.status;
   }
 
   public setBuyValue(car: ICar) {
-    this._buyValue = car.buyValue;
+    this.buyValue = car.buyValue;
   }
 
   public getBuyValue() {
-    return this._buyValue;
+    return this.buyValue;
   }
 
   public setDoorsQty(car: ICar) {
-    this._doorsQty = car.doorsQty;
+    this.doorsQty = car.doorsQty;
   }
 
   public getDoorsQty() {
-    return this._doorsQty;
+    return this.doorsQty;
   }
 
   public setSeatsQty(car: ICar) {
-    this._seatsQty = car.seatsQty;
+    this.seatsQty = car.seatsQty;
   }
 
   public getSeatsQty() {
-    return this._seatsQty;
+    return this.seatsQty;
   }
 }

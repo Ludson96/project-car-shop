@@ -53,3 +53,7 @@ export const validAllCarsOutput: ICar[] = [
     seatsQty: 5,
   },
 ];
+
+// export const validId: string = {
+//   id: '63eb83aac4630c947eb1678c',
+// };

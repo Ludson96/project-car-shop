@@ -13,4 +13,9 @@ router.get(
   (req, res, next) => new CarController(req, res, next).getAllCars(),
 );
 
+router.get(
+  '/:id',
+  (req, res, next) => new CarController(req, res, next).getCarById(),
+);
+
 export default router;

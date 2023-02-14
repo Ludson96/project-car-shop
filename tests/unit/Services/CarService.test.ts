@@ -8,13 +8,18 @@ import Car from '../../../src/Domains/Car';
 const SUCESS = 'Com sucesso';
 
 describe('Testando endpoint /cars', function () {
+  let carService: CarService;
+
+  beforeEach(function () {
+    carService = new CarService();
+  });
+
   describe('Criar um carro (post)', function () {
     it(SUCESS, async function () {
       const carOutput: Car = new Car(validCarOutput);
       sinon.stub(Model, 'create').resolves(carOutput);
       
-      const service = new CarService();
-      const result = await service.create(validCarInput);
+      const result = await carService.create(validCarInput);
       
       expect(result).to.be.deep.equal(carOutput);
     });
@@ -22,8 +27,7 @@ describe('Testando endpoint /cars', function () {
     it('Caso input seja vazio', async function () {
       sinon.stub(Model, 'create').resolves();
       
-      const service = new CarService();
-      const result = await service.create(validCarInput);
+      const result = await carService.create(validCarInput);
       
       expect(result).to.be.deep.equal(null);
     });
@@ -35,11 +39,10 @@ describe('Testando endpoint /cars', function () {
 
   describe('Listando carros', function () {
     describe('Listando todos os carros, endpoint "/cars" (get)', function () {
-      it(SUCESS, function () {
+      it(SUCESS, async function () {
         sinon.stub(Model, 'find').resolves(validAllCarsOutput);
 
-        const service = new CarService();
-        const result = await service.getAllCars();
+        const result = await carService.getAllCars();
 
         expect(result).to.be.deep.equal(validAllCarsOutput);
       });
@@ -48,8 +51,14 @@ describe('Testando endpoint /cars', function () {
         sinon.restore();
       });
     });
+
     describe('Listando carro específico, endpoint "/cars:id" (get)', function () {
-      it(SUCESS, function () {
+      it(SUCESS, async function () {
+        sinon.stub(Model, 'findById').resolves(validAllCarsOutput);
+
+        const result = await carService.getCarById(id);
+
+        expect(result).to.be.deep.equal(validAllCarsOutput);
         
       });
 

@@ -1,13 +1,21 @@
 import { Request, Response, NextFunction } from 'express';
+import StatusError from '../utils/StatusError';
 
-export default class ErrorHandler {
-  public static handle(
-    error: Error,
-    _req: Request,
-    res: Response,
-    next: NextFunction,
-  ) {
-    res.status(500).json({ message: error.message });
-    next();
+class ErrorHandler {
+  public static execute(err: Error, req: Request, res: Response, _next: NextFunction) {
+    let status = 500;
+    let message = 'Internal Server Error';
+    // let type = 'unknown_error';
+
+    if (err instanceof StatusError) {
+      status = err.status;
+      message = err.message;
+      // type = err.type;
+    }
+
+    res.status(status).json({ message });
+    // res.status(status).json({ message, type });
   }
 }
+
+export default ErrorHandler;

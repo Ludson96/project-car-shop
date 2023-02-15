@@ -27,7 +27,11 @@ export default abstract class AbstractODM<T> {
     return this.model.find();
   }
 
-  public async getById(id: string): Promise<T | null> {
-    return this.model.findById(id);
+  public async getById(_id: string): Promise<T | null> {
+    return this.model.findById(_id);
+  }
+
+  public async delete(_id: string): Promise<void> {
+    this.model.findByIdAndDelete(_id);
   }
 }

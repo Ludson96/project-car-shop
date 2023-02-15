@@ -23,4 +23,9 @@ router.put(
   (req, res, next) => new MotorcycleController(req, res, next).updateMoto(),
 );
 
+router.delete(
+  '/:id',
+  (req, res, next) => new MotorcycleController(req, res, next).deleteMoto(),
+);
+
 export default router;
